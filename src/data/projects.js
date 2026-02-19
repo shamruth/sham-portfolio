@@ -4,7 +4,7 @@ export const projects = [
     event: "Intra College Project Expo 2024",
     description:
       "Created an interactive virtual walkthrough of my college campus using Unreal Engine 5 and Blender for 3D modeling and environment design.",
-    file: "public/vcet-explorer.pdf",
+    file: "/vcet-explorer.pdf",
   },
   {
     title: "SIM-DRIVE KIT – Second Position",
