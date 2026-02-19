@@ -4,26 +4,31 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {
-    return res.status(405).json({ error: "Method not allowed" });
+    return res.status(405).json({ message: "Method not allowed" });
   }
 
   const { name, email, message } = req.body;
 
   try {
     await resend.emails.send({
-      from: "Portfolio <onboarding@resend.dev>",
-      to: "your-email@gmail.com",
-      subject: "New Portfolio Contact",
+      from: "Portfolio Contact <onboarding@resend.dev>",
+      to: "shamruth2822006@gmail.com",
+      subject: `New Portfolio Message from ${name}`,
       html: `
-        <h2>New Message</h2>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p>${message}</p>
+        <div style="font-family: Arial, sans-serif; padding: 20px;">
+          <h2>New Portfolio Contact Message 🚀</h2>
+          <p><strong>Name:</strong> ${name}</p>
+          <p><strong>Email:</strong> ${email}</p>
+          <p><strong>Message:</strong></p>
+          <p>${message}</p>
+        </div>
       `,
     });
 
-    return res.status(200).json({ success: true });
+    return res.status(200).json({ message: "Email sent successfully" });
+
   } catch (error) {
-    return res.status(500).json({ error });
+    console.error("Resend Error:", error);
+    return res.status(500).json({ message: "Email failed to send" });
   }
 }

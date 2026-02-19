@@ -1,5 +1,12 @@
 @import "tailwindcss";
-body {
-  @apply bg-slate-950 text-white;
-  font-family: 'Inter', sans-serif;
+
+.dark body {
+  @apply bg-gradient-to-br from-slate-950 via-slate-900 to-black text-white;
 }
+
+.light body {
+  background: linear-gradient(145deg, #f6f6f3, #ecebe7);
+  color: #1f2937;
+}
+
+

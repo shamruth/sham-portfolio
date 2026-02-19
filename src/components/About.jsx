@@ -1,44 +1,133 @@
+import { motion } from "framer-motion";
+import { useTheme } from "../context/ThemeContext";
+import SectionWrapper from "./SectionWrapper";
+import { Globe, Gamepad2, Brain } from "lucide-react";
+
 export default function About() {
+  const { theme } = useTheme();
+
+  const lightCard =
+    "bg-[#f6f6f3] shadow-[6px_6px_14px_#d4d3cd,-6px_-6px_14px_#ffffff]";
+
   return (
-    <section id="about" className="py-24 px-6 max-w-6xl mx-auto">
-      <h2 className="text-4xl font-bold text-center text-violet-400 mb-16">
+    <SectionWrapper
+      id="about"
+      className="py-28 px-6 max-w-6xl mx-auto"
+    >
+      {/* HEADING */}
+      <h2 className="text-4xl font-bold text-violet-500 mb-16">
         About Me
       </h2>
 
-      <div className="grid md:grid-cols-2 gap-16">
+      {/* ================= TIMELINE ================= */}
+      <div className="mb-24">
+        <div className="relative border-l-2 border-violet-500 pl-8 space-y-16">
 
-        {/* TIMELINE */}
-        <div className="space-y-12 border-l-2 border-violet-500 pl-6">
-          <div>
-            <h3 className="text-xl font-bold">10th Standard</h3>
-            <p className="text-gray-400">Completed with strong academic foundation.</p>
-          </div>
+          {/* 12th */}
+          <motion.div
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7 }}
+            viewport={{ once: true }}
+          >
+            <div className="absolute -left-[9px] w-4 h-4 bg-violet-500 rounded-full"></div>
 
-          <div>
-            <h3 className="text-xl font-bold">12th Standard</h3>
-            <p className="text-gray-400">Focused on Computer Science fundamentals.</p>
-          </div>
+            <h3 className="text-xl font-semibold">
+              12th Standard – Higher Secondary
+            </h3>
+            <p className="text-slate-600 mt-2">
+              Bharathi Vidya Bhavan Higher Secondary School, Erode
+            </p>
+            <p className="text-slate-500">
+              2022 – 2023
+            </p>
+          </motion.div>
 
-          <div>
-            <h3 className="text-xl font-bold">Bachelor's Degree</h3>
-            <p className="text-gray-400">Pursuing Computer Science Engineering.</p>
-          </div>
-        </div>
+          {/* BE */}
+          <motion.div
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            <div className="absolute -left-[9px] w-4 h-4 bg-violet-500 rounded-full"></div>
 
-        {/* INTEREST CARDS */}
-        <div className="grid gap-6">
-          {["Full Stack Development", "AI & Machine Learning", "Cloud & DevOps"].map((item, i) => (
-            <div
-              key={i}
-              className="bg-white/5 backdrop-blur-lg border border-white/10 p-6 rounded-2xl hover:scale-105 transition"
-            >
-              <h4 className="text-xl font-semibold text-violet-400">
-                {item}
-              </h4>
-            </div>
-          ))}
+            <h3 className="text-xl font-semibold">
+              Bachelor of Engineering in Computer Science and Engineering
+            </h3>
+            <p className="text-slate-600 mt-2">
+              Velalar College of Engineering and Technology, Erode
+            </p>
+            <p className="text-slate-500">
+              2023 – 2027
+            </p>
+          </motion.div>
+
         </div>
       </div>
-    </section>
+
+      {/* ================= INTERESTS ================= */}
+      <h2 className="text-4xl font-bold text-violet-500 mb-12">
+        My Interests
+      </h2>
+
+      <div className="grid md:grid-cols-3 gap-10">
+
+        {/* Web Dev */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className={`p-10 rounded-2xl text-center transition hover:scale-105 ${
+            theme === "dark"
+              ? "bg-white/5 backdrop-blur-lg border border-white/10"
+              : lightCard
+          }`}
+        >
+          <Globe size={40} className="mx-auto text-violet-500 mb-6" />
+          <h3 className="text-xl font-semibold">
+            Web Development
+          </h3>
+        </motion.div>
+
+        {/* Game Dev */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          viewport={{ once: true }}
+          className={`p-10 rounded-2xl text-center transition hover:scale-105 ${
+            theme === "dark"
+              ? "bg-white/5 backdrop-blur-lg border border-white/10"
+              : lightCard
+          }`}
+        >
+          <Gamepad2 size={40} className="mx-auto text-violet-500 mb-6" />
+          <h3 className="text-xl font-semibold">
+            Game Development
+          </h3>
+        </motion.div>
+
+        {/* AI ML */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          viewport={{ once: true }}
+          className={`p-10 rounded-2xl text-center transition hover:scale-105 ${
+            theme === "dark"
+              ? "bg-white/5 backdrop-blur-lg border border-white/10"
+              : lightCard
+          }`}
+        >
+          <Brain size={40} className="mx-auto text-violet-500 mb-6" />
+          <h3 className="text-xl font-semibold">
+            AI & ML Learning
+          </h3>
+        </motion.div>
+
+      </div>
+    </SectionWrapper>
   );
 }
