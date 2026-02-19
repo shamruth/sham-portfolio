@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Button = ({ children, href, type = 'button', disabled, download }) => {
-  const baseClass = "rounded-[16px] bg-gradient-to-br from-gray-100 to-gray-200 shadow-inner px-6 py-2 font-semibold transition-all focus:outline-none active:shadow-[inset_0_2px_8px_rgba(0,0,0,0.10)]";
+  const baseClass = "skeuo-btn transition-transform active:translate-y-0.5 disabled:opacity-60";
   if (href) {
     return (
       <a

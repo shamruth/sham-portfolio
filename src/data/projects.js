@@ -1,26 +1,23 @@
 export const projects = [
   {
-    title: "Portfolio Website",
-    description: "Production-ready personal portfolio built with React, Vite, TailwindCSS, Framer Motion, and Vercel serverless functions.",
-    image: "/images/portfolio.jpg",
-    tech: ["React", "Vite", "TailwindCSS", "Framer Motion", "Vercel"],
-    github: "https://github.com/yourname/portfolio",
-    demo: "https://yourportfolio.vercel.app"
+    title: "VCET Explorer – First Position",
+    event: "Intra College Project Expo 2024",
+    description:
+      "Created an interactive virtual walkthrough of my college campus using Unreal Engine 5 and Blender for 3D modeling and environment design.",
+    file: "public/vcet-explorer.pptx",
   },
   {
-    title: "E-commerce Dashboard",
-    description: "Admin dashboard for managing products, orders, and analytics.",
-    image: "/images/ecommerce.jpg",
-    tech: ["React", "Node.js", "MongoDB", "TailwindCSS"],
-    github: "https://github.com/yourname/ecommerce-dashboard",
-    demo: "https://ecommerce-dashboard.vercel.app"
+    title: "SIM-DRIVE KIT – Second Position",
+    event: "Intra College Project Expo 2025",
+    description:
+      "Built a custom driving simulation kit (steering wheel and pedals) using Arduino, functioning as a standard HID device.",
+    file: "/sim-drive-kit.pdf",
   },
   {
-    title: "Blog Platform",
-    description: "Minimal blog platform with markdown support and responsive design.",
-    image: "/images/blog.jpg",
-    tech: ["React", "Express", "TailwindCSS"],
-    github: "https://github.com/yourname/blog-platform",
-    demo: "https://blog-platform.vercel.app"
-  }
+    title: "Automated Classroom Attendance System",
+    event: "Deep Learning Project",
+    description:
+      "Developed an automated attendance system using facial recognition and deep learning techniques.",
+    file: "/attendance-system.pdf",
+  },
 ];

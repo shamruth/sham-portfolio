@@ -1,37 +1,5 @@
-@import "@fontsource/inter/index.css";
 @import "tailwindcss";
-
-/* ===== Tailwind v4 Design Tokens ===== */
-@theme {
-  --color-brutalYellow: #fde047;
-  --color-brutalPink: #f472b6;
-  --color-brutalBlack: #000000;
-  --color-brutalWhite: #ffffff;
-}
-
-/* ===== Neo-Brutalism Components ===== */
-@layer components {
-  .brut-card {
-    @apply bg-[--color-brutalYellow] border-4 border-[--color-brutalBlack] shadow-[8px_8px_0_0_#000] p-6;
-  }
-
-  .brut-btn {
-    @apply bg-[--color-brutalPink] border-4 border-[--color-brutalBlack] text-black font-bold uppercase px-6 py-3 shadow-[4px_4px_0_0_#000] transition-colors duration-150;
-  }
-
-  .brut-btn:hover {
-    @apply bg-[--color-brutalBlack] text-[--color-brutalYellow];
-  }
-
-  .brut-input {
-    @apply bg-[--color-brutalWhite] border-4 border-[--color-brutalBlack] px-4 py-2 font-bold text-black focus:outline-none focus:ring-2 focus:ring-black;
-  }
-
-  .brut-progress {
-    @apply bg-[--color-brutalYellow] border-4 border-[--color-brutalBlack] h-4;
-  }
-
-  .brut-progress-bar {
-    @apply bg-[--color-brutalPink] border-4 border-[--color-brutalBlack] h-4 shadow-[4px_4px_0_0_#000];
-  }
+body {
+  @apply bg-slate-950 text-white;
+  font-family: 'Inter', sans-serif;
 }

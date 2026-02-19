@@ -1,53 +1,64 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import MagneticButton from './MagneticButton';
-import AnimatedBlobs from './AnimatedBlobs';
+import { motion } from "framer-motion";
+import { Github, Linkedin, Instagram, Download } from "lucide-react";
 
-export const Hero = () => (
-  <section id="hero" className="relative flex items-center justify-center min-h-[80vh] pt-32 pb-16 bg-blue-400 border-4 border-black shadow-[12px_12px_0_0_#000]">
-    <AnimatedBlobs />
+export default function Hero() {
+  return (
+    <section id="home" className="min-h-screen flex items-center pt-24 px-6">
+      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center">
 
-    <div className="container mx-auto px-6 flex flex-col-reverse md:flex-row-reverse items-center md:items-start gap-8">
-      {/* Profile image */}
-      <motion.div
-        className="flex-shrink-0"
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.8 }}
-      >
-        <div className="w-36 h-36 md:w-56 md:h-56 rounded-full overflow-hidden border-4 border-black shadow-[6px_6px_0_0_#000] bg-white">
-          <img
-            src="/images/profile_pic.jpg"
-            alt="Profile"
-            className="w-full h-full object-cover"
-            style={{ objectPosition: '90% 40%' }}
-          />
-        </div>
-      </motion.div>
-
-      {/* Text + buttons */}
-      <div className="flex-1 text-center md:text-left">
-        <motion.h1
-          className="text-4xl md:text-6xl lg:text-8xl font-extrabold text-black leading-tight"
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
+        {/* LEFT SIDE */}
+        <motion.div
+          initial={{ opacity: 0, x: -40 }}
+          animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1 }}
         >
-          <span className="block">Hi, I'm [Your Name]</span>
-          <span className="block text-pink-500 mt-2 text-lg md:text-2xl">Building Scalable Full Stack Applications</span>
-        </motion.h1>
+          <h2 className="text-5xl md:text-6xl font-bold leading-tight">
+            Hi, I'm <span className="text-violet-400">Shamruth</span>
+          </h2>
 
+          <p className="mt-6 text-gray-400 text-lg">
+            Passionate MERN Stack Developer & AI Enthusiast
+            building scalable systems and immersive 3D experiences.
+          </p>
+
+          {/* SOCIAL LINKS */}
+          <div className="flex gap-5 mt-8">
+            <a href="https://github.com/yourusername" target="_blank">
+              <Github className="hover:text-violet-400" />
+            </a>
+            <a href="https://linkedin.com/in/yourusername" target="_blank">
+              <Linkedin className="hover:text-violet-400" />
+            </a>
+            <a href="https://instagram.com/yourusername" target="_blank">
+              <Instagram className="hover:text-violet-400" />
+            </a>
+          </div>
+
+          {/* DOWNLOAD CV */}
+          <a
+            href="/resume.pdf"
+            download
+            className="mt-8 inline-flex items-center gap-2 px-6 py-3 bg-violet-600 rounded-xl hover:bg-violet-700 transition"
+          >
+            <Download size={18} />
+            Download CV
+          </a>
+        </motion.div>
+
+        {/* RIGHT SIDE */}
         <motion.div
-          className="flex flex-wrap justify-center md:justify-start gap-4 mt-8"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5, duration: 1 }}
+          initial={{ opacity: 0, x: 40 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1 }}
+          className="flex justify-center"
         >
-          <MagneticButton href="#projects">View Projects</MagneticButton>
-          <MagneticButton href="#contact">Contact Me</MagneticButton>
-          <MagneticButton href="/resume.pdf" download>Download Resume</MagneticButton>
+          <img
+            src="public/images/profile_pic.jpg"
+            alt="Profile"
+            className="w-100 h-100 object-cover rounded-full border-4 border-violet-500 shadow-2xl shadow-violet-500/30"
+          />
         </motion.div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+}

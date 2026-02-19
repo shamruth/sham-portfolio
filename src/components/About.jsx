@@ -1,31 +1,44 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import ProgressBar from './ProgressBar';
+export default function About() {
+  return (
+    <section id="about" className="py-24 px-6 max-w-6xl mx-auto">
+      <h2 className="text-4xl font-bold text-center text-violet-400 mb-16">
+        About Me
+      </h2>
 
-const skills = [
-  { name: 'React', level: 90 },
-  { name: 'Node.js', level: 85 },
-  { name: 'TailwindCSS', level: 80 },
-  { name: 'Framer Motion', level: 75 },
-  { name: 'MongoDB', level: 70 },
-];
+      <div className="grid md:grid-cols-2 gap-16">
 
-export const About = () => (
-  <section className="py-16 bg-green-300 border-4 border-black shadow-[8px_8px_0_0_#000] mx-auto max-w-3xl mt-8">
-    <h2 className="text-4xl font-extrabold mb-6 text-center text-black uppercase">About Me</h2>
-    <p className="mb-8 text-black text-center font-bold">
-      MERN Stack Developer based in India. Passionate about building scalable, performant web applications with modern UI/UX. Experienced in React, Node.js, and cloud deployment.
-    </p>
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-      {skills.map(skill => (
-        <div key={skill.name} className="mb-4">
-          <div className="flex justify-between mb-1">
-            <span className="font-bold text-black">{skill.name}</span>
-            <span className="text-sm text-black font-bold">{skill.level}%</span>
+        {/* TIMELINE */}
+        <div className="space-y-12 border-l-2 border-violet-500 pl-6">
+          <div>
+            <h3 className="text-xl font-bold">10th Standard</h3>
+            <p className="text-gray-400">Completed with strong academic foundation.</p>
           </div>
-          <ProgressBar value={skill.level} />
+
+          <div>
+            <h3 className="text-xl font-bold">12th Standard</h3>
+            <p className="text-gray-400">Focused on Computer Science fundamentals.</p>
+          </div>
+
+          <div>
+            <h3 className="text-xl font-bold">Bachelor's Degree</h3>
+            <p className="text-gray-400">Pursuing Computer Science Engineering.</p>
+          </div>
         </div>
-      ))}
-    </div>
-  </section>
-);
+
+        {/* INTEREST CARDS */}
+        <div className="grid gap-6">
+          {["Full Stack Development", "AI & Machine Learning", "Cloud & DevOps"].map((item, i) => (
+            <div
+              key={i}
+              className="bg-white/5 backdrop-blur-lg border border-white/10 p-6 rounded-2xl hover:scale-105 transition"
+            >
+              <h4 className="text-xl font-semibold text-violet-400">
+                {item}
+              </h4>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}

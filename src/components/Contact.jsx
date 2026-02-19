@@ -1,78 +1,45 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import Button from './Button';
+import { useState } from "react";
 
-export const Contact = () => {
-  const [form, setForm] = useState({ name: '', email: '', message: '' });
-  const [status, setStatus] = useState('idle');
-  const [error, setError] = useState('');
+export default function Contact() {
+  const [form, setForm] = useState({ name: "", email: "", message: "" });
 
-  const handleChange = e => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
-
-  const validate = () => {
-    if (!form.name || !form.email || !form.message) return 'All fields required.';
-    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(form.email)) return 'Invalid email.';
-    return '';
-  };
-
-  const handleSubmit = async e => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const err = validate();
-    if (err) { setError(err); return; }
-    setStatus('sending');
-    setError('');
-    try {
-      const res = await axios.post('/api/contact', form);
-      if (res.data.success) {
-        setStatus('success');
-        setForm({ name: '', email: '', message: '' });
-      } else {
-        setStatus('error');
-        setError(res.data.error || 'Failed to send.');
-      }
-    } catch {
-      setStatus('error');
-      setError('Failed to send.');
-    }
+    await fetch("/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(form),
+    });
+    alert("Message Sent 🚀");
   };
 
   return (
-    <section id="contact" className="py-16 bg-purple-300 border-4 border-black shadow-[8px_8px_0_0_#000] mx-auto max-w-2xl mt-8">
-      <h2 className="text-4xl font-extrabold mb-6 text-center text-black uppercase">Contact Me</h2>
-      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+    <section id="contact" className="py-24 px-6 max-w-4xl mx-auto">
+      <h2 className="text-4xl font-bold mb-10 text-center text-violet-400">
+        Contact Me
+      </h2>
+
+      <form onSubmit={handleSubmit} className="space-y-6">
         <input
-          className="bg-white border-4 border-black px-4 py-2 font-bold text-black focus:outline-none focus:ring-2 focus:ring-black"
-          name="name"
+          className="w-full p-4 bg-white/5 border border-white/10 rounded-xl"
           placeholder="Name"
-          value={form.name}
-          onChange={handleChange}
-          disabled={status === 'sending'}
+          onChange={(e) => setForm({ ...form, name: e.target.value })}
         />
         <input
-          className="bg-white border-4 border-black px-4 py-2 font-bold text-black focus:outline-none focus:ring-2 focus:ring-black"
-          name="email"
+          className="w-full p-4 bg-white/5 border border-white/10 rounded-xl"
           placeholder="Email"
-          value={form.email}
-          onChange={handleChange}
-          disabled={status === 'sending'}
+          onChange={(e) => setForm({ ...form, email: e.target.value })}
         />
         <textarea
-          className="bg-white border-4 border-black px-4 py-2 font-bold text-black focus:outline-none focus:ring-2 focus:ring-black"
-          name="message"
+          className="w-full p-4 bg-white/5 border border-white/10 rounded-xl"
           placeholder="Message"
-          value={form.message}
-          onChange={handleChange}
-          disabled={status === 'sending'}
-          rows={5}
+          rows="5"
+          onChange={(e) => setForm({ ...form, message: e.target.value })}
         />
-        <Button type="submit" disabled={status === 'sending'}>
-          {status === 'sending' ? 'Sending...' : 'Send Message'}
-        </Button>
-        {status === 'success' && <div className="text-green-600 font-bold">Message sent!</div>}
-        {error && <div className="text-red-600 font-bold">{error}</div>}
+        <button className="px-8 py-4 bg-violet-600 rounded-xl hover:bg-violet-700">
+          Send Message
+        </button>
       </form>
     </section>
   );
-};
+}
