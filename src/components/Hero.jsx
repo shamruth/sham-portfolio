@@ -15,7 +15,7 @@ export default function Hero() {
 
   return (
     <section id="home" className="min-h-screen flex items-center pt-24 px-6">
-      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center">
+      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center text-center md:text-left">
 
         {/* LEFT */}
         <motion.div
@@ -110,7 +110,7 @@ export default function Hero() {
         <div className={`${cardStyle} p-3 rounded-full overflow-hidden flex items-center justify-center`}>
         <img
             src="/images/profile_pic.jpg"
-            className="w-[340px] h-[340px] object-cover object-[center_35%] rounded-full"
+            className="w-[280px] h-[280px] md:w-[360px] md:h-[360px] object-cover object-[center_35%] rounded-full"
             alt="Profile"
         />
         </div>
