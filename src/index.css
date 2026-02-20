@@ -8,5 +8,6 @@
   background: linear-gradient(145deg, #f6f6f3, #ecebe7);
   color: #1f2937;
 }
-
-
+html {
+  scroll-behavior: smooth;
+}

@@ -19,9 +19,17 @@ export default function Navbar() {
       <div className="max-w-6xl mx-auto px-4 md:px-6 py-4 flex justify-between items-center">
 
         {/* Logo */}
-        <h1 className="text-lg md:text-xl font-bold text-violet-500">
-          Shamruthya Gopal N
-        </h1>
+          <a
+            href="#home"
+            onClick={() => setIsOpen(false)}
+            className={`text-lg md:text-xl font-bold px-3 py-1 rounded-md transition-all duration-300 ${
+              theme === "dark"
+                ? "text-violet-500 hover:opacity-80"
+                : "bg-[#fefae0] border-2 border-black shadow-[3px_3px_0px_#000] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none text-black"
+            }`}
+          >
+            Shamruthya Gopal N
+          </a>
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-8">
