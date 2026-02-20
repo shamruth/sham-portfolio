@@ -45,46 +45,51 @@ export default function Hero() {
             combine creativity with engineering precision.
           </p>
 
-          <div className="flex gap-6 mt-8">
+  <div className="flex gap-6 mt-8">
 
+  {/* GitHub */}
   <a
     href="https://github.com/shamruth"
     target="_blank"
     rel="noopener noreferrer"
-    className="group transition"
+    className={`transition-all duration-300 p-2 rounded-md ${
+      theme === "dark"
+        ? "hover:bg-white/10 hover:backdrop-blur-md hover:border hover:border-white/10 hover:shadow-[0_8px_20px_rgba(139,92,246,0.35)] hover:-translate-y-[2px]"
+        : "bg-white border border-black shadow-[3px_3px_0px_#000] hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-none"
+    }`}
   >
-    <Github
-      size={26}
-      className="transition duration-300 group-hover:scale-125 group-hover:text-violet-500"
-    />
+    <Github size={22} />
   </a>
 
+  {/* LinkedIn */}
   <a
     href="https://www.linkedin.com/in/shamruth28022006/"
     target="_blank"
     rel="noopener noreferrer"
-    className="group transition"
+    className={`transition-all duration-300 p-2 rounded-md ${
+      theme === "dark"
+        ? "hover:bg-white/10 hover:backdrop-blur-md hover:border hover:border-white/10 hover:shadow-[0_8px_20px_rgba(139,92,246,0.35)] hover:-translate-y-[2px]"
+        : "bg-white border border-black shadow-[3px_3px_0px_#000] hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-none"
+    }`}
   >
-    <Linkedin
-      size={26}
-      className="transition duration-300 group-hover:scale-125 group-hover:text-violet-500"
-    />
+    <Linkedin size={22} />
   </a>
 
+  {/* Instagram */}
   <a
     href="https://www.instagram.com/shamruthya_gopal/"
     target="_blank"
     rel="noopener noreferrer"
-    className="group transition"
+    className={`transition-all duration-300 p-2 rounded-md ${
+      theme === "dark"
+        ? "hover:bg-white/10 hover:backdrop-blur-md hover:border hover:border-white/10 hover:shadow-[0_8px_20px_rgba(139,92,246,0.35)] hover:-translate-y-[2px]"
+        : "bg-white border border-black shadow-[3px_3px_0px_#000] hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-none"
+    }`}
   >
-    <Instagram
-      size={26}
-      className="transition duration-300 group-hover:scale-125 group-hover:text-violet-500"
-    />
+    <Instagram size={22} />
   </a>
 
 </div>
-
 
           <a
             href="/Shamruth_resume.pdf"
