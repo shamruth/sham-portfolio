@@ -12,85 +12,86 @@ export default function Navbar() {
     <nav
       className={`fixed w-full z-50 transition-all duration-300 ${
         theme === "dark"
-          ? "backdrop-blur-lg bg-black/30 border-b border-white/10"
-          : "bg-white/80 backdrop-blur-md border-b border-slate-200"
+          ? "backdrop-blur-xl bg-white/5 border-b border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.4)]"
+          : "bg-white border-b border-slate-200"
       }`}
     >
       <div className="max-w-6xl mx-auto px-4 md:px-6 py-4 flex justify-between items-center">
 
-        {/* Logo */}
-          <a
-            href="#home"
-            onClick={() => setIsOpen(false)}
-            className={`text-lg md:text-xl font-bold px-3 py-1 rounded-md transition-all duration-300 ${
-              theme === "dark"
-                ? "text-violet-500 hover:opacity-80"
-                : "bg-[#fefae0] border-2 border-black shadow-[3px_3px_0px_#000] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none text-black"
-            }`}
-          >
-            Shamruthya Gopal N
-          </a>
+        {/* LOGO */}
+        <a
+          href="#home"
+          onClick={() => setIsOpen(false)}
+          className="text-lg md:text-xl font-bold text-violet-500"
+        >
+          Shamruthya Gopal N
+        </a>
 
-        {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-8">
+        {/* DESKTOP NAV */}
+        <div className="hidden md:flex items-center gap-10">
+
           {navItems.map((item, i) => (
             <a
               key={i}
               href={`#${item.toLowerCase()}`}
-              className={`relative group text-sm font-medium transition-colors duration-300 ${
-                theme === "dark"
-                  ? "text-gray-300 hover:text-white"
-                  : "text-slate-700 hover:text-violet-600"
-              }`}
+            className={`relative text-sm font-medium px-3 py-1 rounded-md transition-all duration-300 ${
+              theme === "dark"
+                ? "text-gray-300 hover:text-white hover:bg-white/10 hover:backdrop-blur-md hover:border hover:border-white/10 hover:shadow-[0_8px_20px_rgba(139,92,246,0.25)] hover:-translate-y-[2px]"
+                : "text-black hover:bg-white hover:border hover:border-black hover:shadow-[3px_3px_0px_#000] hover:-translate-x-[1px] hover:-translate-y-[1px]"
+            }`}
             >
               {item}
-              <span className="absolute left-0 -bottom-1 h-[2px] w-0 bg-violet-500 transition-all duration-300 group-hover:w-full"></span>
+
+              {/* Underline only in dark */}
+              {theme === "dark" && (
+                <span className="absolute left-0 -bottom-1 h-[2px] w-0 bg-violet-500 transition-all duration-300 hover:w-full"></span>
+              )}
             </a>
           ))}
 
-          {/* Theme Toggle */}
+          {/* THEME TOGGLE */}
           <button
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
             className={`p-2 rounded-full transition ${
               theme === "dark"
-                ? "bg-white/10 hover:bg-white/20"
-                : "bg-slate-100 hover:bg-slate-200"
+                ? "bg-white/10 border border-white/10 backdrop-blur-md shadow-inner"
+                : "border border-black"
             }`}
           >
             {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
           </button>
+
         </div>
 
-        {/* Mobile Controls */}
+        {/* MOBILE CONTROLS */}
         <div className="flex items-center gap-4 md:hidden">
 
-          {/* Theme Toggle (Visible on Mobile) */}
           <button
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
             className={`p-2 rounded-full transition ${
               theme === "dark"
-                ? "bg-white/10"
-                : "bg-slate-100"
+                ? "bg-white/10 border border-white/10 backdrop-blur-md shadow-inner"
+                : "border border-black"
             }`}
           >
             {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
           </button>
 
-          {/* Menu Button */}
           <button onClick={() => setIsOpen(!isOpen)}>
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
+
         </div>
 
       </div>
 
-      {/* Mobile Dropdown */}
+      {/* MOBILE MENU */}
       {isOpen && (
         <div
-          className={`md:hidden px-6 pb-6 space-y-4 transition-all duration-300 ${
+          className={`md:hidden mx-4 mb-6 rounded-2xl p-6 space-y-5 transition-all duration-300 ${
             theme === "dark"
-              ? "bg-black/90 text-white"
-              : "bg-white text-slate-800"
+              ? "backdrop-blur-xl bg-white/5 border border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.6)]"
+              : "bg-white border border-black"
           }`}
         >
           {navItems.map((item, i) => (
@@ -98,7 +99,11 @@ export default function Navbar() {
               key={i}
               href={`#${item.toLowerCase()}`}
               onClick={() => setIsOpen(false)}
-              className="block text-base font-medium hover:text-violet-500 transition"
+              className={`block text-base font-medium transition-all ${
+                theme === "dark"
+                  ? "text-gray-300 hover:text-white hover:bg-white/10 hover:backdrop-blur-md hover:border hover:border-white/10 hover:shadow-[0_8px_20px_rgba(139,92,246,0.25)] hover:-translate-y-[2px] px-3 py-2 rounded-md transition-all duration-300"
+                  : "text-black hover:border hover:border-black hover:shadow-[3px_3px_0px_#000] hover:-translate-x-[1px] hover:-translate-y-[1px] px-2 py-1"
+              }`}
             >
               {item}
             </a>
